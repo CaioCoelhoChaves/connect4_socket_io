@@ -84,7 +84,7 @@ class Game{
             }
         }
 
-        //TESTE VERTICAL
+        //TESTES VERTICAIS
         for(let c = 0; c <= 6; c++){  
             for(let l = 0; l <= 35; l+=7){
                 if(this.tilesList[c+l] == this.tilesList[c+(l+7)] 
@@ -97,6 +97,31 @@ class Game{
             }
         }
 
+        //TESTES DIAGONAIS 1
+        for(let u = 0; u <= 17; u++){
+            if( (u >= 0 && u <= 3) || (u >= 7 && u <= 10) || (u >= 14 && u <= 17) ){
+                if(this.tilesList[u] == this.tilesList[u+8] 
+                && this.tilesList[u] == this.tilesList[u+16]
+                && this.tilesList[u] == this.tilesList[u+24]
+                && this.tilesList[u] != "white"){
+                    console.log("VENCEDOR: " + this.tilesList[l+c]);
+                    this.theWinner = this.tilesList[l+c];
+                }
+            }
+        }
+
+        //TESTES DIAGONAIS 2
+        for(let u = 20; u >= 3; u--){
+            if( (u <= 6 && u >= 3) || (u <= 13 && u >= 10) || (u <= 20 && u >= 17) ){
+                if(this.tilesList[u] == this.tilesList[u+6] 
+                && this.tilesList[u] == this.tilesList[u+12]
+                && this.tilesList[u] == this.tilesList[u+18]
+                && this.tilesList[u] != "white"){
+                    console.log("VENCEDOR: " + this.tilesList[l+c]);
+                    this.theWinner = this.tilesList[l+c];
+                }
+            }
+        }
 
     }
     /* CONNECT 4 TILES
