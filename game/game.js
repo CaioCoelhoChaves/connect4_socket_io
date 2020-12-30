@@ -104,8 +104,8 @@ class Game{
                 && this.tilesList[u] == this.tilesList[u+16]
                 && this.tilesList[u] == this.tilesList[u+24]
                 && this.tilesList[u] != "white"){
-                    console.log("VENCEDOR: " + this.tilesList[l+c]);
-                    this.theWinner = this.tilesList[l+c];
+                    console.log("VENCEDOR: " + this.tilesList[u]);
+                    this.theWinner = this.tilesList[u];
                 }
             }
         }
@@ -117,8 +117,8 @@ class Game{
                 && this.tilesList[u] == this.tilesList[u+12]
                 && this.tilesList[u] == this.tilesList[u+18]
                 && this.tilesList[u] != "white"){
-                    console.log("VENCEDOR: " + this.tilesList[l+c]);
-                    this.theWinner = this.tilesList[l+c];
+                    console.log("VENCEDOR: " + this.tilesList[u]);
+                    this.theWinner = this.tilesList[u];
                 }
             }
         }
