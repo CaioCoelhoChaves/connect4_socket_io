@@ -26,14 +26,16 @@ class Game{
                 this.status = "playing";
                 this.io.sockets.in(this.id).emit('status', this.status);
             }
-        } else if(this.players.length == 2){
+        } else if(this.players.includes(player)){
+            this.io.sockets.in(this.id).emit('tiles', JSON.stringify(this.tilesList));
+        }
+        else if(this.players.length == 2){
             socket.emit('error', 'Sala cheia!');
         } 
     }
 
     newPlay(player, column, socket){
-        console.log(this.theWinner);
-        if(this.playerTurn == player && this.theWinner == "none"){ 
+        if(this.playerTurn == player && this.theWinner == "none" && this.status != "waiting"){ 
             if(player == this.players[0]){ //JOGADOR VERMELHO
                 this.play(column, "red");
                 this.playerTurn = this.players[1]//Muda a vez de jogar
@@ -46,6 +48,9 @@ class Game{
             this.io.sockets.in(this.id).emit('turn', this.playerTurn);
             this.io.sockets.in(this.id).emit('tiles', JSON.stringify(this.tilesList));
             this.io.sockets.in(this.id).emit('status', this.status);
+            if(this.theWinner != "none"){
+                socket.emit('theWinner', this.theWinner);
+            }
         } else if(this.theWinner != "none"){
             socket.emit('theWinner', this.theWinner);
         }else{

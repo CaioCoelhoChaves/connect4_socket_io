@@ -35,8 +35,6 @@ io.on("connection", (socket) => {
     socket.on('newPlay', (data) => {
         games[rooms.indexOf(data.room)].newPlay(socket.id, data.column, socket);
     });
-
-
     
 });
 
